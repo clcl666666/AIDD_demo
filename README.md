@@ -14,3 +14,4 @@ wget https://zhanggroup.org/TM-score/TMscore.cpp # 下载源码
 g++ -O3 -o TMscore TMscore.cpp # 编译 
 ./TMscore model.pdb native.pdb 
 ```
+#### The structural similarity matrix was further clustered by Unweighted Pair Group Method with Arithmetic mean (UPGMA) and visualized by Figtree (http://tree.bio.ed.ac.uk/software/figtree/).
