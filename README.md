@@ -15,3 +15,10 @@ g++ -O3 -o TMscore TMscore.cpp # 编译
 ./TMscore model.pdb native.pdb 
 ```
 #### The structural similarity matrix was further clustered by Unweighted Pair Group Method with Arithmetic mean (UPGMA) and visualized by Figtree (http://tree.bio.ed.ac.uk/software/figtree/).
+
+UPGMA算法步骤：
+
+计算样本间的欧几里得距离矩阵。
+找到距离最小的两个簇，合并它们，并记录合并高度。
+更新距离矩阵，使用新簇与其他簇的平均距离。
+重复直到只剩一个簇
