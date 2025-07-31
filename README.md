@@ -1,4 +1,4 @@
-# AIDD_course
+# AIDD_domo
 ## AI辅助酶设计
 ### Discovery of deaminase functions by structure-based protein clustering. 2023. Cell文章复现
 #### pdb文件下载
