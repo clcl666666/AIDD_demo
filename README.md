@@ -1,5 +1,42 @@
 # AIDD_domo
 ## AI辅助酶设计
+### Learning protein fitness landscapes with deep mutational scanning data from multiple sources. 2023. Cell systems文章复现
+#### 软件安装
+```
+git clone https://github.com/cl666666/GVP-MSA.git
+<!-- pytorch1.9.1, python3.9 -->
+conda create -n gvpmsa python==3.9
+conda activate gvpmsa
+pip3 install torch torchvision torchaudio
+pip install fair-esm 或者pip install git+https://github.com/facebookresearch/esm.git 
+pip install numpy==1.24.0
+pip install pandas matplotlib scipy omegaconf scikit-learn biotite biopython
+```
+```
+# torch_geometric安装
+>>> import torch
+>>> print(torch.__version__)
+2.7.1+cu126
+>>> print(torch.cuda.is_available())
+True
+>>> print(torch.version.cuda)
+12.6
+
+pip install torch-scatter -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
+pip install torch-sparse -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
+pip install torch-cluster -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
+pip install torch-spline-conv -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
+
+pip install torch-geometric
+```
+
+
+#### 运行报错解决
+```
+python ./simple_models/addition.py --dataset_name TEM1
+FileNotFoundError: [Errno 2] No such file or directory: '/home/chenlin/directed_evolution/gvp/input_data/TEM1/TEM1_single.csv'
+
+```
 ### Discovery of deaminase functions by structure-based protein clustering. 2023. Cell文章复现
 #### pdb文件下载
 1. https://www.ebi.ac.uk/interpro/ 网页上，使用DddA deaminase检索
@@ -14,11 +51,13 @@ wget https://zhanggroup.org/TM-score/TMscore.cpp # 下载源码
 g++ -O3 -o TMscore TMscore.cpp # 编译 
 ./TMscore model.pdb native.pdb 
 ```
-#### The structural similarity matrix was further clustered by Unweighted Pair Group Method with Arithmetic mean (UPGMA) and visualized by Figtree (http://tree.bio.ed.ac.uk/software/figtree/).
+#### Unweighted Pair Group Method with Arithmetic mean (UPGMA)聚类，Figtree美化.
 
 UPGMA算法步骤：
 
-计算样本间的欧几里得距离矩阵。
-找到距离最小的两个簇，合并它们，并记录合并高度。
-更新距离矩阵，使用新簇与其他簇的平均距离。
-重复直到只剩一个簇
+1. 计算样本间的欧几里得距离矩阵。
+2. 找到距离最小的两个簇，合并它们，并记录合并高度。
+3. 更新距离矩阵，使用新簇与其他簇的平均距离。
+4. 重复直到只剩一个簇
+
+输出保存成Newick文件，放入figtree(http://tree.bio.ed.ac.uk/software/figtree/)中美化。
