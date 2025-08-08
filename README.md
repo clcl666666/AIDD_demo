@@ -4,10 +4,12 @@
 #### 软件安装
 ```
 git clone https://github.com/cl666666/GVP-MSA.git
-<!-- pytorch1.9.1, python3.9 -->
+
+
 conda create -n gvpmsa python==3.9
 conda activate gvpmsa
-pip3 install torch torchvision torchaudio
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+
 pip install fair-esm 或者pip install git+https://github.com/facebookresearch/esm.git 
 pip install numpy==1.24.0
 pip install pandas matplotlib scipy omegaconf scikit-learn biotite biopython
@@ -22,12 +24,18 @@ True
 >>> print(torch.version.cuda)
 12.6
 
+pip install torch-geometric
+
 pip install torch-scatter -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
 pip install torch-sparse -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
 pip install torch-cluster -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
 pip install torch-spline-conv -f https://data.pyg.org/whl/torch-2.7.0+cu126.html
+```
 
-pip install torch-geometric
+```
+#测试模型，在单个数据集上随机划分数据，训练和验证。
+python train_single_protein_randomly.py --train_dataset_names TEM1 --n_ensembles 3  
+
 ```
 
 
@@ -35,7 +43,7 @@ pip install torch-geometric
 ```
 python ./simple_models/addition.py --dataset_name TEM1
 FileNotFoundError: [Errno 2] No such file or directory: '/home/chenlin/directed_evolution/gvp/input_data/TEM1/TEM1_single.csv'
-
+# 文件路径需要换成相对路径。
 ```
 ### Discovery of deaminase functions by structure-based protein clustering. 2023. Cell文章复现
 #### pdb文件下载
