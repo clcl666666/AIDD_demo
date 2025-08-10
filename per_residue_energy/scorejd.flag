@@ -1,0 +1,4 @@
+-in:file:s PGF-CH1.pdb 
+-ignore_waters true
+-out:pdb 
+-ignore_unrecognized_res  

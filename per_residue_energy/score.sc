@@ -1,0 +1,4 @@
+SEQUENCE: 
+SCORE: total_score dslf_fa13    fa_atr    fa_dun   fa_elec fa_intra_rep fa_intra_sol_xover4              fa_rep              fa_sol hbond_bb_sc hbond_lr_bb    hbond_sc hbond_sr_bb linear_chainbreak lk_ball_wtd       omega overlap_chainbreak            p_aa_pp pro_close rama_prepro         ref yhh_planarity description 
+SCORE:    1454.286    -1.956 -1293.939  1206.433  -235.408        3.880              47.951             724.868             820.033     -14.358     -79.224      -4.575     -18.453             0.000     -12.919      74.632              0.000            -25.544    73.157     108.488      81.220         0.000 PGF-CH1_0001
+SCORE:    1454.286    -1.956 -1293.939  1206.433  -235.408        3.880              47.951             724.868             820.033     -14.358     -79.224      -4.575     -18.453             0.000     -12.919      74.632              0.000            -25.544    73.157     108.488      81.220         0.000 PGF-CH1_0001

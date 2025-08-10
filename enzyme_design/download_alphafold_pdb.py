@@ -2,7 +2,7 @@ import requests
 import os
 import pandas as pd
 # Function to download a PDB file for a given UniProt ID
-def download_pdb(uniprot_id, database_version='v4', output_dir='pdb_files'):
+def download_pdb(uniprot_id, database_version='v4', output_dir='pdb_files_new'):
     # Create output directory if it doesn't exist
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)

@@ -76,7 +76,7 @@ def get_distance_matrix(pdb_files):
 
     return tmscore_matrix, labels
 
-pdb_dir = Path('pdb_files')
+pdb_dir = Path('pdb_files_new')
 pdb_files = list(pdb_dir.rglob('AF*'))
 # 只取前50个进行计算
 pdb_files = pdb_files[:50]
@@ -84,6 +84,7 @@ pdb_files = pdb_files[:50]
 tmscore_matrix, labels = get_distance_matrix(pdb_files)
 
 # 调用UPGMA（method='average'）
+# [0,1] 1最像，0
 Z = linkage(1-tmscore_matrix, method='average')
 linkage_to_newick(Z, labels,output_file="tree.nwk")
 
@@ -96,5 +97,5 @@ ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right', fontsize=9)
 plt.title('UPGMA Clustering Dendrogram')
 plt.ylabel('Distance')
 plt.tight_layout()
-plt.savefig('dendrogram.png', dpi=300)
+plt.savefig('dendrogram_new.png', dpi=300)
 plt.close()
