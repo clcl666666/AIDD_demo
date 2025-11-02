@@ -1,0 +1,19 @@
+name: plm
+channels:
+  - conda-forge
+  - defaults
+  - pytorch
+dependencies:
+  - python=3.10
+  - numpy>=1.22,<=1.24.3
+  - pytorch
+  - cudatoolkit
+  - pathlib
+  - biopython
+  - pip
+  - pip:
+    - ankh
+    - fair-esm
+    - jax-unirep
+    - transformers
+    - tensorflow>=2.0  

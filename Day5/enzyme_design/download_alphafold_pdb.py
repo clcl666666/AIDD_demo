@@ -2,7 +2,7 @@ import requests
 import os
 import pandas as pd
 # Function to download a PDB file for a given UniProt ID
-def download_pdb(uniprot_id, database_version='v4', output_dir='pdb_files_new'):
+def download_pdb(uniprot_id, database_version='v6', output_dir='pdb_files_new'):
     # Create output directory if it doesn't exist
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -10,6 +10,7 @@ def download_pdb(uniprot_id, database_version='v4', output_dir='pdb_files_new'):
     # Construct AlphaFold DB URL
     alphafold_id = f'AF-{uniprot_id}-F1'
     model_url = f'https://alphafold.ebi.ac.uk/files/{alphafold_id}-model_{database_version}.pdb'
+    print(model_url)
     output_path = os.path.join(output_dir, f'{alphafold_id}.pdb')
     
     try:
@@ -34,7 +35,7 @@ def main():
     uniprot_ids = list(set(df['id']))
     
     # Download PDB files for each UniProt ID
-    database_version = 'v4'  # Adjust if a newer version is available
+    database_version = 'v6'  # Adjust if a newer version is available
     successful = 0
     failed = 0
     

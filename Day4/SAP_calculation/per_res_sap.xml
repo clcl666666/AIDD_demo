@@ -1,0 +1,70 @@
+
+
+<ROSETTASCRIPTS>
+    <SCOREFXNS>
+        <ScoreFunction name="sfxn_design" weights="beta_nov16" >
+            <Reweight scoretype="sap_constraint" weight="1.0" />
+        </ScoreFunction>
+    </SCOREFXNS>
+    <RESIDUE_SELECTORS>
+        <Chain name="chainA" chains="A"/>
+        
+
+        <StoredResidueSubset name="stored_bad_sap" subset_name="bad_sap_stored" />
+        <Not name="not_stored_bad_sap" selector="stored_bad_sap" />
+
+    </RESIDUE_SELECTORS>
+    <TASKOPERATIONS>
+
+        <OperateOnResidueSubset name="restrict_not_bad_sap" selector="not_stored_bad_sap">
+            <RestrictToRepackingRLT/>
+        </OperateOnResidueSubset>
+
+    </TASKOPERATIONS>
+    <MOVERS>
+
+        <AddSapConstraintMover name="add_sap" speed="lightning" sap_goal="0"  penalty_per_sap="10" score_selector="chainA" sap_calculate_selector="chainA"  packing_correction="0" /> 
+
+        <ClearConstraintsMover name="clear_constraints" />
+
+    </MOVERS>
+    <SIMPLE_METRICS>
+
+        <SapScoreMetric name="my_sap_score" />
+
+        <PerResidueSapScoreMetric name="my_per_res_sap" />
+
+    </SIMPLE_METRICS>
+    <RESIDUE_SELECTORS>
+
+        <SimpleMetricSelector name="bad_sap" metric="my_per_res_sap" lower_bound="1.4" />
+
+    </RESIDUE_SELECTORS>
+    <MOVERS>
+
+        <StoreResidueSubset name="store_bad_sap" subset_name="bad_sap_stored" residue_selector="bad_sap" overwrite="1" />
+
+    </MOVERS>
+    <FILTERS>
+
+        <Time name="timed"/>
+        <TrueFilter name="my_true_filter" />
+        
+    </FILTERS>
+    <MOVERS>
+
+        <PackRotamersMover name="redesign_bad_sap" scorefxn="sfxn_design" task_operations="restrict_not_bad_sap" />
+
+    </MOVERS>
+    <APPLY_TO_POSE>
+    </APPLY_TO_POSE>
+    <PROTOCOLS>
+
+        <Add metrics="my_per_res_sap" />
+        <Add metrics="my_sap_score" />
+
+
+
+    </PROTOCOLS>
+    <OUTPUT />
+</ROSETTASCRIPTS>

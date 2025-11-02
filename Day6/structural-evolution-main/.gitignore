@@ -1,0 +1,6 @@
+data
+output
+*.pyc
+*.png
+*.log
+.tar

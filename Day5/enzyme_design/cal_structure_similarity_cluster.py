@@ -79,7 +79,7 @@ def get_distance_matrix(pdb_files):
 pdb_dir = Path('pdb_files_new')
 pdb_files = list(pdb_dir.rglob('AF*'))
 # 只取前50个进行计算
-pdb_files = pdb_files[:50]
+pdb_files = pdb_files[:20]
 
 tmscore_matrix, labels = get_distance_matrix(pdb_files)
 

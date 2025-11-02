@@ -1,0 +1,40 @@
+# macOS system files
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Data and output directories
+data/exp/exp_data/
+data/exp/n_mutant_dicts/
+data/exp/wt_fasta/
+output/
+
+# Python package info
+evolvepro.egg-info
+
+# Old environment file
+environment_old.yml
+
+# Specific directory
+scripts/exp/check_embeddings/
+external/
+
+# Specific files
+scripts/dms/dms_check.py
+embeddings_env.yml
+
+# Ignore .out files in any directory
+**/*.out
+
+# Python cache files in any directory
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Python virtual environments
+venv/
+*.venv
+env/
+*.env
